@@ -14,9 +14,15 @@ interface HomeViewProps {
   currency: CurrencyCode;
   onNavigate: (route: ActiveRoute) => void;
   onQuickAdd: (product: Product, variantLabel: string) => void;
+  onOpenDiscountPopup?: () => void;
 }
 
-export function HomeView({ currency, onNavigate, onQuickAdd }: HomeViewProps) {
+export function HomeView({
+  currency,
+  onNavigate,
+  onQuickAdd,
+  onOpenDiscountPopup,
+}: HomeViewProps) {
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
 
   const newSeasonProducts = PRODUCTS.filter((p) => p.isNewSeason).slice(0, 4);
@@ -190,9 +196,11 @@ export function HomeView({ currency, onNavigate, onQuickAdd }: HomeViewProps) {
       </section>
 
       {/* 6. Promotional Marquee Strip */}
-      <div
-        className="bg-[#6B5342] text-white/95 py-2.5 overflow-hidden text-[12px] tracking-[0.06em]"
-        aria-label="Limited-time offer announcement"
+      <button
+        type="button"
+        onClick={onOpenDiscountPopup}
+        className="w-full block bg-[#6B5342] hover:bg-[#5C4534] text-white/95 py-2.5 overflow-hidden text-[12px] tracking-[0.06em] transition-colors cursor-pointer text-left"
+        aria-label="Open 20% off welcome offer"
       >
         <div className="animate-marquee flex items-center gap-16 whitespace-nowrap">
           <span>Enjoy an exclusive 20% discount on all collections—for a limited time only!</span>
@@ -204,7 +212,7 @@ export function HomeView({ currency, onNavigate, onQuickAdd }: HomeViewProps) {
           <span>Enjoy an exclusive 20% discount on all collections—for a limited time only!</span>
           <span aria-hidden="true">·</span>
         </div>
-      </div>
+      </button>
 
       {/* 7. Loved by You Testimonials */}
       <section className="max-w-[1380px] mx-auto px-6 md:px-12 py-16 md:py-24">

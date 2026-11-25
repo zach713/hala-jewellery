@@ -45,6 +45,8 @@ interface ConfirmedOrder {
 }
 
 const SAVED_INFO_KEY = 'hala_checkout_customer_v1';
+const GOOGLE_APPS_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbyM0SVPvVDndKJqmeM0kClsJkp2m2pHvBMR3B5fBUg27I4eaYM_nzLjagkS7QVDijGb/exec';
 
 const COUNTRIES = [
   'Morocco',
@@ -98,6 +100,7 @@ export function CheckoutView({
   const [promoFeedback, setPromoFeedback] = useState<string | null>(null);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState<ConfirmedOrder | null>(
     null
   );
@@ -161,8 +164,10 @@ export function CheckoutView({
     }
   };
 
-  const handleSubmitOrder = (e: FormEvent) => {
+  const handleSubmitOrder = async (e: FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     const nextErrors: Record<string, string> = {};
 
     if (!lastName.trim()) {
@@ -198,6 +203,37 @@ export function CheckoutView({
       }
     } catch {
       // Ignore storage errors
+    }
+
+    const fullName = [customerSnapshot.firstName, customerSnapshot.lastName]
+      .filter(Boolean)
+      .join(' ');
+    const fullAddress = [
+      customerSnapshot.address,
+      customerSnapshot.city,
+      customerSnapshot.country,
+    ]
+      .filter(Boolean)
+      .join(', ');
+
+    setIsSubmitting(true);
+    try {
+      await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: fullName,
+          phone: customerSnapshot.phone,
+          address: fullAddress,
+        }),
+      });
+    } catch {
+      // Proceed to confirmation screen even if the opaque no-cors request fails
+    } finally {
+      setIsSubmitting(false);
     }
 
     setConfirmedOrder({
@@ -886,9 +922,10 @@ export function CheckoutView({
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full rounded-[6px] bg-[#10599D] hover:bg-[#0D4A85] text-white text-[15px] font-semibold py-4 transition-colors cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full rounded-[6px] bg-[#10599D] hover:bg-[#0D4A85] disabled:opacity-70 text-white text-[15px] font-semibold py-4 transition-colors cursor-pointer disabled:cursor-not-allowed"
               >
-                Complete order
+                {isSubmitting ? 'Completing order...' : 'Complete order'}
               </button>
 
               {/* Terms Footer Link */}

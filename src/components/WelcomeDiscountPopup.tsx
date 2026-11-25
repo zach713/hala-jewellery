@@ -1,13 +1,21 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Check, Copy, X } from 'lucide-react';
 import { JewelleryImage } from './JewelleryImage';
 
-const POPUP_SEEN_KEY = 'hala_welcome_popup_seen_v1';
 const CLAIMED_PROMO_KEY = 'hala_claimed_promo_v1';
 const PROMO_CODE = 'HALA20';
 
-export function WelcomeDiscountPopup() {
-  const [modalOpen, setModalOpen] = useState(false);
+interface WelcomeDiscountPopupProps {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}
+
+export function WelcomeDiscountPopup({
+  isOpen,
+  onOpen,
+  onClose,
+}: WelcomeDiscountPopupProps) {
   const [tabVisible, setTabVisible] = useState(true);
   const [email, setEmail] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -19,35 +27,6 @@ export function WelcomeDiscountPopup() {
     }
   });
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    try {
-      const alreadySeen = sessionStorage.getItem(POPUP_SEEN_KEY);
-      if (alreadySeen) return;
-
-      const timer = window.setTimeout(() => {
-        setModalOpen(true);
-        try {
-          sessionStorage.setItem(POPUP_SEEN_KEY, '1');
-        } catch {
-          // Ignore storage restrictions
-        }
-      }, 900);
-
-      return () => window.clearTimeout(timer);
-    } catch {
-      return undefined;
-    }
-  }, []);
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    try {
-      sessionStorage.setItem(POPUP_SEEN_KEY, '1');
-    } catch {
-      // Ignore storage restrictions
-    }
-  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -78,7 +57,7 @@ export function WelcomeDiscountPopup() {
   return (
     <>
       {/* Floating Vertical 20% Off Side Tab */}
-      {tabVisible && !modalOpen && (
+      {tabVisible && !isOpen && (
         <div className="fixed right-0 top-[26%] z-30 flex flex-col items-center bg-[#F5EFE8]/95 backdrop-blur-xs border border-r-0 border-[#E5DDD4] rounded-l-[14px] shadow-[0_8px_24px_rgba(74,56,43,0.12)] overflow-hidden">
           <button
             type="button"
@@ -91,7 +70,7 @@ export function WelcomeDiscountPopup() {
 
           <button
             type="button"
-            onClick={() => setModalOpen(true)}
+            onClick={onOpen}
             aria-label="Open 20% off welcome offer"
             className="px-3.5 pt-2 pb-5 [writing-mode:vertical-rl] rotate-180 font-serif text-[17px] tracking-[0.03em] text-[#5C4534] hover:text-[#2D221B] transition-colors cursor-pointer"
           >
@@ -100,8 +79,8 @@ export function WelcomeDiscountPopup() {
         </div>
       )}
 
-      {/* Welcome 20% Off Modal */}
-      {modalOpen && (
+      {/* Welcome 20% Off Modal (Closed by default; opens on button/link click) */}
+      {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-[1px]"
           role="dialog"
@@ -110,7 +89,7 @@ export function WelcomeDiscountPopup() {
         >
           <div
             className="fixed inset-0"
-            onClick={handleCloseModal}
+            onClick={onClose}
             aria-hidden="true"
           />
 
@@ -118,7 +97,7 @@ export function WelcomeDiscountPopup() {
             {/* Close Button */}
             <button
               type="button"
-              onClick={handleCloseModal}
+              onClick={onClose}
               aria-label="Close welcome offer"
               className="absolute top-4 right-4 z-20 p-1.5 text-[#221A14] hover:opacity-70 transition-opacity cursor-pointer"
             >
@@ -126,12 +105,12 @@ export function WelcomeDiscountPopup() {
             </button>
 
             {/* Left Editorial Photo */}
-            <div className="relative h-[220px] md:h-auto md:min-h-[430px] overflow-hidden">
+            <div className="relative min-h-[240px] md:min-h-[430px] bg-[#EDE5DC] overflow-hidden">
               <JewelleryImage
                 src="/src/assets/images/cat_ear_cuffs_1795290310241.jpg"
-                alt="Hala Jewellery sculpted gold ear cuffs and rings editorial"
+                alt="Hala Jewellery sculpted gold ear cuffs editorial"
                 loading="eager"
-                className="w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover object-top"
               />
               <div
                 aria-hidden="true"
@@ -181,7 +160,7 @@ export function WelcomeDiscountPopup() {
 
                   <button
                     type="button"
-                    onClick={handleCloseModal}
+                    onClick={onClose}
                     className="w-full bg-[#6E5746] hover:bg-[#5C4534] text-white rounded-[8px] py-3.5 text-[12.5px] tracking-[0.14em] uppercase font-medium transition-colors cursor-pointer"
                   >
                     SHOP WITH 20% OFF

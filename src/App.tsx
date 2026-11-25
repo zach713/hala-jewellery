@@ -20,6 +20,7 @@ export default function App() {
   const [currency, setCurrency] = useState<CurrencyCode>('MAD');
   const [cartOpen, setCartOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [discountPopupOpen, setDiscountPopupOpen] = useState(false);
 
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
@@ -133,6 +134,7 @@ export default function App() {
             currency={currency}
             onNavigate={handleNavigate}
             onQuickAdd={handleAddToCart}
+            onOpenDiscountPopup={() => setDiscountPopupOpen(true)}
           />
         )}
 
@@ -179,7 +181,13 @@ export default function App() {
 
       {!isCheckoutView && <Footer onNavigate={handleNavigate} />}
 
-      {!isCheckoutView && <WelcomeDiscountPopup />}
+      {!isCheckoutView && (
+        <WelcomeDiscountPopup
+          isOpen={discountPopupOpen}
+          onOpen={() => setDiscountPopupOpen(true)}
+          onClose={() => setDiscountPopupOpen(false)}
+        />
+      )}
 
       <CartDrawer
         isOpen={cartOpen}
