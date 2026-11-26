@@ -7,28 +7,16 @@ export const HERO_MEDIA = {
 
 export const CATEGORY_TILES: CategoryTile[] = [
   {
-    slug: 'ear-cuffs',
-    title: 'EAR CUFFS',
-    subtitle: 'The stacked-ear look, no new piercings required.',
-    image: '/src/assets/images/cat_ear_cuffs_1795290310241.jpg',
-  },
-  {
-    slug: 'sets',
-    title: 'SETS',
-    subtitle: 'Matched with intention, made to be worn together.',
-    image: '/src/assets/images/hero_editorial_left_1795290310652.jpg',
+    slug: 'necklaces',
+    title: 'NECKLACES',
+    subtitle: 'Pieces that sit right where people look first.',
+    image: '/src/assets/images/prod_juliette_necklace_1795290310775.jpg',
   },
   {
     slug: 'earrings',
     title: 'EARRINGS',
     subtitle: 'Sculpted silhouettes and luminous stones that frame every angle.',
     image: '/src/assets/images/cat_earrings_pearl_1795290310886.jpg',
-  },
-  {
-    slug: 'necklaces',
-    title: 'NECKLACES',
-    subtitle: 'Pieces that sit right where people look first.',
-    image: '/src/assets/images/prod_juliette_necklace_1795290310775.jpg',
   },
   {
     slug: 'rings',
@@ -42,6 +30,18 @@ export const CATEGORY_TILES: CategoryTile[] = [
     subtitle: 'Easy to wear daily, impossible to go unnoticed.',
     image: '/src/assets/images/cat_bracelets_1795290312113.jpg',
   },
+  {
+    slug: 'watches',
+    title: 'WATCHES',
+    subtitle: 'Refined timepieces designed to pair effortlessly with your everyday stack.',
+    image: '/src/assets/images/prod_onda_bracelet_1795290309930.jpg',
+  },
+  {
+    slug: 'traditional',
+    title: 'TRADITIONAL',
+    subtitle: 'Moroccan heritage-inspired jewellery crafted to adorn caftans and celebrations.',
+    image: '/src/assets/images/prod_sculptural_ring_1795290311106.jpg',
+  },
 ];
 
 export const COLLECTION_META: Record<
@@ -53,7 +53,7 @@ export const COLLECTION_META: Record<
     subtitle: 'Limited contemporary pieces designed for effortless self-expression.',
   },
   'new-this-season': {
-    title: 'NEW THIS SEASON',
+    title: 'NEW IN',
     subtitle: 'Freshly curated silhouettes cast in 18k gold plating and white rhodium.',
   },
   'back-in-stock': {
@@ -83,6 +83,14 @@ export const COLLECTION_META: Record<
   bracelets: {
     title: 'BRACELETS',
     subtitle: 'Easy to wear daily, impossible to go unnoticed.',
+  },
+  watches: {
+    title: 'WATCHES',
+    subtitle: 'Refined timepieces designed to pair effortlessly with your everyday stack.',
+  },
+  traditional: {
+    title: 'TRADITIONAL',
+    subtitle: 'Moroccan heritage-inspired jewellery crafted to adorn caftans and timeless celebrations.',
   },
 };
 
@@ -527,6 +535,136 @@ export const PRODUCTS: Product[] = [
     ],
     dimensions: 'Chain 40cm + 5cm extender · Pendant 12mm × 9mm',
     careNote: 'Hypoallergenic and tarnish-protected for everyday layering.',
+  },
+  {
+    id: 'atlas-gold-watch',
+    slug: 'atlas-gold-watch',
+    name: 'Atlas Petite Timepiece',
+    priceAud: 215,
+    category: 'watches',
+    categoryLabel: 'Watches',
+    inStock: true,
+    stockCount: 4,
+    image: '/src/assets/images/prod_onda_bracelet_1795290309930.jpg',
+    gallery: [
+      '/src/assets/images/prod_onda_bracelet_1795290309930.jpg',
+      '/src/assets/images/cat_bracelets_1795290312113.jpg',
+    ],
+    swatches: [
+      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+    ],
+    description:
+      'A slender sculptural bracelet watch in warm 18k gold finish with a minimalist champagne dial built to stack cleanly alongside delicate cuffs.',
+    materials: [
+      '18k gold plated stainless steel link strap',
+      'Scratch-resistant mineral crystal dial',
+    ],
+    dimensions: 'Case 22mm · Adjustable link clasp',
+    careNote: 'Water-resistant for daily handwashing; store flat in your Hala keepsake pouch.',
+  },
+  {
+    id: 'safia-mesh-watch',
+    slug: 'safia-mesh-watch',
+    name: 'Safia Woven Mesh Watch',
+    priceAud: 195,
+    category: 'watches',
+    categoryLabel: 'Watches',
+    inStock: true,
+    stockCount: 5,
+    image: '/src/assets/images/cat_bracelets_1795290312113.jpg',
+    gallery: [
+      '/src/assets/images/cat_bracelets_1795290312113.jpg',
+      '/src/assets/images/prod_onda_bracelet_1795290309930.jpg',
+    ],
+    swatches: [
+      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+    ],
+    description:
+      'Fluid Milanese-inspired wrist watch featuring an ultra-slim bezel and satin dial that transitions effortlessly from daywear to evening.',
+    materials: [
+      '18k yellow gold plated stainless steel',
+      'Japanese quartz movement',
+    ],
+    dimensions: 'Case 24mm · Self-adjusting mesh strap',
+    careNote: 'Wipe gently with a dry microfiber cloth after wear.',
+  },
+  {
+    id: 'fes-pearl-drop-traditional',
+    slug: 'fes-pearl-drop-traditional',
+    name: 'Fes Heritage Pearl Drops',
+    priceAud: 139,
+    category: 'traditional',
+    categoryLabel: 'Traditional',
+    inStock: true,
+    stockCount: 4,
+    image: '/src/assets/images/cat_earrings_pearl_1795290310886.jpg',
+    gallery: [
+      '/src/assets/images/cat_earrings_pearl_1795290310886.jpg',
+      '/src/assets/images/hero_editorial_right_1795290311303.jpg',
+    ],
+    swatches: [
+      { id: 'gold-pearl', label: '18k Gold & Freshwater Pearl', hex: '#E6D6B8' },
+    ],
+    description:
+      'Inspired by classic Moroccan bridal adornment, pairing radiant cultured pearls with intricate gold-toned drop detailing made to complement caftans.',
+    materials: [
+      '18k yellow gold plated sterling posts',
+      'Hand-selected luminous freshwater pearls',
+    ],
+    dimensions: 'Drop length 42mm · Lightweight ceremonial silhouette',
+    careNote: 'Put on after perfume and hairspray to preserve pearl luster.',
+  },
+  {
+    id: 'marrakech-medallion-necklace',
+    slug: 'marrakech-medallion-necklace',
+    name: 'Marrakech Heritage Pendant',
+    priceAud: 165,
+    category: 'traditional',
+    categoryLabel: 'Traditional',
+    inStock: true,
+    stockCount: 3,
+    image: '/src/assets/images/prod_juliette_necklace_1795290310775.jpg',
+    gallery: [
+      '/src/assets/images/prod_juliette_necklace_1795290310775.jpg',
+      '/src/assets/images/prod_helena_set_1795290309434.jpg',
+    ],
+    swatches: [
+      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+    ],
+    description:
+      'A refined Moroccan-inspired statement pendant balanced on fine pearl-stationed links, crafted for celebratory occasions and timeless eveningwear.',
+    materials: [
+      '18k gold plated 925 sterling silver',
+      'Cultured freshwater pearl accents',
+    ],
+    dimensions: 'Chain 45cm + 5cm extender',
+    careNote: 'Presented in a lined Hala keepsake pouch.',
+  },
+  {
+    id: 'rabat-sculpted-cuff',
+    slug: 'rabat-sculpted-cuff',
+    name: 'Rabat Filigree Cuff',
+    priceAud: 149,
+    category: 'traditional',
+    categoryLabel: 'Traditional',
+    inStock: true,
+    stockCount: 3,
+    image: '/src/assets/images/prod_sculptural_ring_1795290311106.jpg',
+    gallery: [
+      '/src/assets/images/prod_sculptural_ring_1795290311106.jpg',
+      '/src/assets/images/cat_bracelets_1795290312113.jpg',
+    ],
+    swatches: [
+      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+    ],
+    description:
+      'Richly proportioned ceremonial wrist and hand silhouette evoking traditional Moroccan goldsmithing with a clean modern finish.',
+    materials: [
+      '18k yellow gold plated brass over hypoallergenic core',
+      'Tarnish-resistant protective finish',
+    ],
+    dimensions: 'Adjustable open silhouette · Fits wrists 14cm–18cm',
+    careNote: 'Adjust gently once for a tailored fit.',
   },
 ];
 

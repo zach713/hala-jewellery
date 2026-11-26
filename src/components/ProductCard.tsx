@@ -8,6 +8,7 @@ interface ProductCardProps {
   currency: CurrencyCode;
   onSelectProduct: (productId: string) => void;
   onQuickAdd: (product: Product, variantLabel: string) => void;
+  mobileAspectRatio?: '4/5' | 'square';
 }
 
 export function ProductCard({
@@ -15,12 +16,19 @@ export function ProductCard({
   currency,
   onSelectProduct,
   onQuickAdd,
+  mobileAspectRatio = 'square',
 }: ProductCardProps) {
   const variantLabel = product.swatches?.[0]?.label ?? 'Signature Finish';
+  const imageAspectClass =
+    mobileAspectRatio === '4/5'
+      ? 'aspect-[4/5] md:aspect-square'
+      : 'aspect-square';
 
   return (
     <article className="group flex flex-col">
-      <div className="relative aspect-square w-full bg-white border border-[#EAE5DF] overflow-hidden transition-shadow duration-200 group-hover:shadow-[0_6px_24px_rgba(74,56,43,0.06)]">
+      <div
+        className={`relative ${imageAspectClass} w-full bg-white border border-[#EAE5DF] overflow-hidden transition-shadow duration-200 group-hover:shadow-[0_6px_24px_rgba(74,56,43,0.06)]`}
+      >
         <button
           type="button"
           onClick={() => onSelectProduct(product.id)}

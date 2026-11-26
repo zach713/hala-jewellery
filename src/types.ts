@@ -9,7 +9,9 @@ export type CategorySlug =
   | 'earrings'
   | 'necklaces'
   | 'rings'
-  | 'bracelets';
+  | 'bracelets'
+  | 'watches'
+  | 'traditional';
 
 export type InfoPageSlug =
   | 'story'

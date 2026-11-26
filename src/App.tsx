@@ -17,7 +17,7 @@ const CART_STORAGE_KEY = 'hala_jewellery_bag_v1';
 
 export default function App() {
   const [route, setRoute] = useState<ActiveRoute>({ view: 'home' });
-  const [currency, setCurrency] = useState<CurrencyCode>('MAD');
+  const [currency] = useState<CurrencyCode>('MAD');
   const [cartOpen, setCartOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [discountPopupOpen, setDiscountPopupOpen] = useState(false);
@@ -119,8 +119,6 @@ export default function App() {
       {!isCheckoutView && (
         <Header
           activeRoute={route}
-          currency={currency}
-          onChangeCurrency={setCurrency}
           cartCount={cartCount}
           onNavigate={handleNavigate}
           onOpenSearch={() => setSearchOpen(true)}
@@ -179,8 +177,6 @@ export default function App() {
         )}
       </main>
 
-      {!isCheckoutView && <Footer onNavigate={handleNavigate} />}
-
       {!isCheckoutView && (
         <WelcomeDiscountPopup
           isOpen={discountPopupOpen}
@@ -188,6 +184,8 @@ export default function App() {
           onClose={() => setDiscountPopupOpen(false)}
         />
       )}
+
+      {!isCheckoutView && <Footer onNavigate={handleNavigate} />}
 
       <CartDrawer
         isOpen={cartOpen}

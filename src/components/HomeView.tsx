@@ -25,7 +25,6 @@ export function HomeView({
 }: HomeViewProps) {
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
 
-  const newSeasonProducts = PRODUCTS.filter((p) => p.isNewSeason).slice(0, 4);
   const discoverProducts = PRODUCTS.slice(4, 8);
 
   const visibleReviews = Array.from({ length: 4 }, (_, offset) => {
@@ -72,7 +71,7 @@ export function HomeView({
         {/* Centered Bottom Editorial Headline + Crisp White CTA Button */}
         <div className="absolute inset-x-0 bottom-0 pb-12 md:pb-16 px-6 flex flex-col items-center text-center">
           <h1 className="font-serif text-[36px] sm:text-[46px] md:text-[56px] leading-[1.06] font-normal text-white tracking-[-0.01em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.28)] [text-wrap:balance]">
-            Limited Pieces. Lasting Presence.
+            Modern Touch. Moroccan Soul.
           </h1>
           <button
             type="button"
@@ -86,45 +85,13 @@ export function HomeView({
         </div>
       </section>
 
-      {/* 2. NEW THIS SEASON */}
-      <section className="max-w-[1380px] mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-14">
-        <div className="flex items-baseline justify-between gap-4 mb-8">
-          <h2 className="font-serif text-[28px] md:text-[34px] font-light tracking-[0.04em] text-[#5C4534]">
-            NEW THIS SEASON
-          </h2>
-          <button
-            type="button"
-            onClick={() =>
-              onNavigate({ view: 'collection', slug: 'new-this-season' })
-            }
-            className="text-[13px] text-[#6E5441] hover:text-[#4A382B] underline underline-offset-4 transition-colors whitespace-nowrap cursor-pointer"
-          >
-            View all
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
-          {newSeasonProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              currency={currency}
-              onSelectProduct={(id) =>
-                onNavigate({ view: 'product', productId: id })
-              }
-              onQuickAdd={onQuickAdd}
-            />
-          ))}
-        </div>
-      </section>
-
       {/* 3. SHOP BY CATEGORY */}
       <section className="max-w-[1380px] mx-auto px-6 md:px-12 py-12 md:py-16">
         <h2 className="font-serif text-[28px] md:text-[34px] font-light tracking-[0.04em] text-[#5C4534] mb-8">
           SHOP BY CATEGORY
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-8 md:gap-y-12">
           {CATEGORY_TILES.map((cat) => (
             <button
               key={cat.slug}
@@ -132,16 +99,16 @@ export function HomeView({
               onClick={() =>
                 onNavigate({ view: 'collection', slug: cat.slug })
               }
-              className="group text-center flex flex-col cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5C4534]"
+              className="group text-center flex flex-col items-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5C4534]"
             >
-              <div className="w-full aspect-[3/4] overflow-hidden bg-[#F7F4F0]">
+              <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-[#F7F4F0]">
                 <JewelleryImage
                   src={cat.image}
                   alt={`${cat.title} editorial collection`}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
-              <span className="mt-4 text-[13px] tracking-[0.16em] uppercase text-[#5C4534] group-hover:text-[#7A6352] transition-colors">
+              <span className="mt-3 md:mt-4 w-full text-center text-[13px] tracking-[0.16em] uppercase text-[#5C4534] group-hover:text-[#7A6352] transition-colors">
                 {cat.title}
               </span>
             </button>
@@ -174,24 +141,35 @@ export function HomeView({
           <button
             type="button"
             onClick={() => onNavigate({ view: 'collection', slug: 'all' })}
-            className="text-[13px] text-[#6E5441] hover:text-[#4A382B] underline underline-offset-4 transition-colors whitespace-nowrap cursor-pointer"
+            className="hidden md:inline-block text-[13px] text-[#6E5441] hover:text-[#4A382B] underline underline-offset-4 transition-colors whitespace-nowrap cursor-pointer"
           >
             View all
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-7">
           {discoverProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
               currency={currency}
+              mobileAspectRatio="4/5"
               onSelectProduct={(id) =>
                 onNavigate({ view: 'product', productId: id })
               }
               onQuickAdd={onQuickAdd}
             />
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center md:hidden">
+          <button
+            type="button"
+            onClick={() => onNavigate({ view: 'collection', slug: 'all' })}
+            className="border border-[#5C4534] text-[#5C4534] hover:bg-[#5C4534] hover:text-white px-8 py-3 text-[12px] tracking-[0.16em] uppercase font-medium transition-colors cursor-pointer"
+          >
+            View all
+          </button>
         </div>
       </section>
 
@@ -215,8 +193,8 @@ export function HomeView({
       </button>
 
       {/* 7. Loved by You Testimonials */}
-      <section className="max-w-[1380px] mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="text-center mb-12">
+      <section className="max-w-[1380px] mx-auto px-3 md:px-12 py-16 md:py-24">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="font-serif text-[32px] md:text-[38px] font-light text-[#5C4534]">
             Loved by You
           </h2>
@@ -239,35 +217,38 @@ export function HomeView({
             type="button"
             onClick={handlePrevReviews}
             aria-label="Previous customer reviews"
-            className="hidden sm:flex w-10 h-10 shrink-0 items-center justify-center text-[#6E5441] hover:text-[#4A382B] transition-colors cursor-pointer"
+            className="hidden md:flex w-10 h-10 shrink-0 items-center justify-center text-[#6E5441] hover:text-[#4A382B] transition-colors cursor-pointer"
           >
             <ChevronLeft className="w-5 h-5 stroke-[1.5]" aria-hidden="true" />
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 flex-1">
+          <div className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-5 flex-1">
             {visibleReviews.map((review) => (
               <div
                 key={review.id}
-                className="bg-[#F7F5F2] px-7 py-10 flex flex-col items-center justify-between text-center min-h-[260px]"
+                className="bg-[#F7F5F2] px-1.5 py-3 md:px-7 md:py-10 flex flex-col items-center justify-between text-center min-w-0 h-full md:min-h-[260px]"
               >
-                <p className="text-[13px] leading-[1.65] text-[#5C4534] line-clamp-4">
+                <p className="text-[12px] md:text-[13px] leading-[1.35] md:leading-[1.65] text-[#5C4534] line-clamp-4 break-words w-full">
                   {review.quote}
                 </p>
 
-                <div className="mt-8 flex flex-col items-center gap-2">
-                  <div className="flex items-center gap-1" aria-hidden="true">
+                <div className="mt-3 md:mt-8 flex flex-col items-center gap-1 md:gap-2 w-full min-w-0">
+                  <div className="flex items-center justify-center gap-0.5 md:gap-1" aria-hidden="true">
                     {Array.from({ length: review.rating }).map((_, idx) => (
                       <Star
                         key={idx}
-                        className="w-3.5 h-3.5 fill-[#6E5441] text-[#6E5441]"
+                        className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 fill-[#6E5441] text-[#6E5441]"
                       />
                     ))}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[12px] font-medium text-[#5C4534]">
-                    <span>{review.author}</span>
+                  <div className="flex items-center justify-center gap-1.5 text-[11px] md:text-[12px] font-medium text-[#5C4534] max-w-full">
+                    <span className="md:hidden truncate">
+                      {review.author.split(' ')[0]}
+                    </span>
+                    <span className="hidden md:inline">{review.author}</span>
                     {review.verified && (
                       <CheckCircle2
-                        className="w-3.5 h-3.5 fill-[#6E5441] text-white"
+                        className="hidden md:block w-3.5 h-3.5 fill-[#6E5441] text-white"
                         aria-label="Verified buyer"
                       />
                     )}
@@ -281,14 +262,14 @@ export function HomeView({
             type="button"
             onClick={handleNextReviews}
             aria-label="Next customer reviews"
-            className="hidden sm:flex w-10 h-10 shrink-0 items-center justify-center text-[#6E5441] hover:text-[#4A382B] transition-colors cursor-pointer"
+            className="hidden md:flex w-10 h-10 shrink-0 items-center justify-center text-[#6E5441] hover:text-[#4A382B] transition-colors cursor-pointer"
           >
             <ChevronRight className="w-5 h-5 stroke-[1.5]" aria-hidden="true" />
           </button>
         </div>
 
         {/* Mobile review arrows */}
-        <div className="mt-6 flex sm:hidden items-center justify-center gap-6">
+        <div className="mt-6 flex md:hidden items-center justify-center gap-6">
           <button
             type="button"
             onClick={handlePrevReviews}

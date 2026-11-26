@@ -56,9 +56,9 @@ export function WelcomeDiscountPopup({
 
   return (
     <>
-      {/* Floating Vertical 20% Off Side Tab */}
+      {/* Floating Vertical 20% Off Side Tab (Desktop only) */}
       {tabVisible && !isOpen && (
-        <div className="fixed right-0 top-[26%] z-30 flex flex-col items-center bg-[#F5EFE8]/95 backdrop-blur-xs border border-r-0 border-[#E5DDD4] rounded-l-[14px] shadow-[0_8px_24px_rgba(74,56,43,0.12)] overflow-hidden">
+        <div className="hidden md:flex fixed right-0 top-[26%] z-30 flex-col items-center bg-[#F5EFE8]/95 backdrop-blur-xs border border-r-0 border-[#E5DDD4] rounded-l-[14px] shadow-[0_8px_24px_rgba(74,56,43,0.12)] overflow-hidden">
           <button
             type="button"
             onClick={() => setTabVisible(false)}
@@ -75,6 +75,29 @@ export function WelcomeDiscountPopup({
             className="px-3.5 pt-2 pb-5 [writing-mode:vertical-rl] rotate-180 font-serif text-[17px] tracking-[0.03em] text-[#5C4534] hover:text-[#2D221B] transition-colors cursor-pointer"
           >
             20% off
+          </button>
+        </div>
+      )}
+
+      {/* Non-overlapping In-Flow 20% Off Tab (Mobile only) */}
+      {tabVisible && !isOpen && (
+        <div className="md:hidden w-full bg-[#F5EFE8] border-t border-[#E5DDD4] px-6 py-3 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={onOpen}
+            aria-label="Open 20% off welcome offer"
+            className="font-serif text-[17px] tracking-[0.03em] text-[#5C4534] hover:text-[#2D221B] transition-colors cursor-pointer"
+          >
+            20% off
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setTabVisible(false)}
+            aria-label="Dismiss 20% off offer tab"
+            className="p-1 text-[#3D2E23] hover:text-[#111111] transition-colors cursor-pointer"
+          >
+            <X className="w-4 h-4 stroke-[1.75]" aria-hidden="true" />
           </button>
         </div>
       )}

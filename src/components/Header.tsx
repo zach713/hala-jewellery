@@ -6,14 +6,11 @@ import {
   ShoppingBag,
   X,
 } from 'lucide-react';
-import { ActiveRoute, CategorySlug, CurrencyCode } from '../types';
-import { CURRENCIES } from '../utils/currency';
+import { ActiveRoute, CategorySlug } from '../types';
 import { BrandWordmark } from './BrandWordmark';
 
 interface HeaderProps {
   activeRoute: ActiveRoute;
-  currency: CurrencyCode;
-  onChangeCurrency: (currency: CurrencyCode) => void;
   cartCount: number;
   onNavigate: (route: ActiveRoute) => void;
   onOpenSearch: () => void;
@@ -22,17 +19,14 @@ interface HeaderProps {
 
 const COLLECTION_SUBLINKS: { slug: CategorySlug; label: string }[] = [
   { slug: 'necklaces', label: 'NECKLACES' },
+  { slug: 'earrings', label: 'EARRINGS' },
   { slug: 'rings', label: 'RINGS' },
   { slug: 'bracelets', label: 'BRACELETS' },
-  { slug: 'ear-cuffs', label: 'EAR CUFFS' },
-  { slug: 'sets', label: 'SETS' },
-  { slug: 'earrings', label: 'EARRINGS' },
+  { slug: 'watches', label: 'WATCHES' },
 ];
 
 export function Header({
   activeRoute,
-  currency,
-  onChangeCurrency,
   cartCount,
   onNavigate,
   onOpenSearch,
@@ -40,11 +34,9 @@ export function Header({
 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [collectionsOpen, setCollectionsOpen] = useState(false);
-  const [currencyOpen, setCurrencyOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const collectionsRef = useRef<HTMLDivElement>(null);
-  const currencyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 36);
@@ -60,12 +52,6 @@ export function Header({
         !collectionsRef.current.contains(e.target as Node)
       ) {
         setCollectionsOpen(false);
-      }
-      if (
-        currencyRef.current &&
-        !currencyRef.current.contains(e.target as Node)
-      ) {
-        setCurrencyOpen(false);
       }
     }
     document.addEventListener('mousedown', handleOutside);
@@ -102,7 +88,7 @@ export function Header({
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 pt-4 pb-3">
-        {/* Top Row: Left utilities — Center Grand Wordmark — Right Contact & Bag */}
+        {/* Top Row: Left utilities — Center Grand Wordmark — Right Bag */}
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
           {/* Left Utilities */}
           <div className="flex items-center gap-4 md:gap-5">
@@ -147,41 +133,6 @@ export function Header({
 
           {/* Right Utilities */}
           <div className="flex items-center justify-end gap-4 md:gap-6">
-            <div className="relative hidden sm:block" ref={currencyRef}>
-              <button
-                type="button"
-                onClick={() => setCurrencyOpen((prev) => !prev)}
-                className={`flex items-center gap-1 text-[11px] tracking-[0.1em] py-1 cursor-pointer whitespace-nowrap ${textTone}`}
-                aria-label="Select currency"
-                aria-expanded={currencyOpen}
-              >
-                <span className="font-medium">{currency}</span>
-                <ChevronDown className="w-3 h-3" aria-hidden="true" />
-              </button>
-
-              {currencyOpen && (
-                <div className="absolute right-0 mt-2 w-24 bg-white border border-[#EAE5DF] shadow-md py-1 z-50">
-                  {CURRENCIES.map((code) => (
-                    <button
-                      key={code}
-                      type="button"
-                      onClick={() => {
-                        onChangeCurrency(code);
-                        setCurrencyOpen(false);
-                      }}
-                      className={`w-full text-left px-3 py-1.5 text-[12px] tracking-[0.06em] transition-colors cursor-pointer ${
-                        code === currency
-                          ? 'bg-[#F8F5F1] text-[#5C4534] font-medium'
-                          : 'text-[#4A382B] hover:bg-[#FAF8F5]'
-                      }`}
-                    >
-                      {code}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
             <button
               type="button"
               onClick={onOpenCart}
@@ -209,24 +160,6 @@ export function Header({
           className="hidden md:flex items-center justify-center gap-7 lg:gap-9 mt-3.5 text-[11px] tracking-[0.14em] font-medium"
           aria-label="Primary navigation"
         >
-          <button
-            type="button"
-            onClick={() =>
-              navigateAndClose({ view: 'collection', slug: 'new-this-season' })
-            }
-            className={`whitespace-nowrap shrink-0 py-0.5 border-b transition-colors cursor-pointer ${
-              isNavActive('new-this-season')
-                ? isHomeOverlay
-                  ? 'border-white text-white'
-                  : 'border-[#5C4534] text-[#5C4534]'
-                : isHomeOverlay
-                  ? 'border-transparent text-white/95 hover:border-white/70'
-                  : 'border-transparent text-[#4A382B] hover:border-[#7A6352]/40'
-            }`}
-          >
-            NEW SEASON
-          </button>
-
           <button
             type="button"
             onClick={() =>
@@ -273,10 +206,10 @@ export function Header({
           <button
             type="button"
             onClick={() =>
-              navigateAndClose({ view: 'collection', slug: 'back-in-stock' })
+              navigateAndClose({ view: 'collection', slug: 'traditional' })
             }
             className={`whitespace-nowrap shrink-0 py-0.5 border-b transition-colors cursor-pointer ${
-              isNavActive('back-in-stock')
+              isNavActive('traditional')
                 ? isHomeOverlay
                   ? 'border-white text-white'
                   : 'border-[#5C4534] text-[#5C4534]'
@@ -285,30 +218,23 @@ export function Header({
                   : 'border-transparent text-[#4A382B] hover:border-[#7A6352]/40'
             }`}
           >
-            BACK IN STOCK
+            TRADITIONAL
           </button>
-
-          <span
-            aria-hidden="true"
-            className={isHomeOverlay ? 'text-white/50' : 'text-[#B5A89C]'}
-          >
-            •
-          </span>
 
           <button
             type="button"
             onClick={() => navigateAndClose({ view: 'info', slug: 'story' })}
-            className={`whitespace-nowrap shrink-0 font-serif text-[15px] tracking-[0.02em] font-normal py-0.5 border-b transition-colors cursor-pointer ${
+            className={`whitespace-nowrap shrink-0 py-0.5 border-b transition-colors cursor-pointer ${
               activeRoute.view === 'info' && activeRoute.slug === 'story'
                 ? isHomeOverlay
                   ? 'border-white text-white'
                   : 'border-[#5C4534] text-[#5C4534]'
                 : isHomeOverlay
-                  ? 'border-transparent text-white hover:border-white/70'
+                  ? 'border-transparent text-white/95 hover:border-white/70'
                   : 'border-transparent text-[#4A382B] hover:border-[#7A6352]/40'
             }`}
           >
-            World of Hala
+            OUR STORY
           </button>
         </nav>
       </div>
@@ -344,15 +270,6 @@ export function Header({
             <button
               type="button"
               onClick={() =>
-                navigateAndClose({ view: 'collection', slug: 'new-this-season' })
-              }
-              className="block w-full text-left text-[12px] tracking-[0.14em] py-1.5"
-            >
-              NEW SEASON
-            </button>
-            <button
-              type="button"
-              onClick={() =>
                 navigateAndClose({ view: 'collection', slug: 'all' })
               }
               className="block w-full text-left text-[12px] tracking-[0.14em] py-1.5"
@@ -362,18 +279,18 @@ export function Header({
             <button
               type="button"
               onClick={() =>
-                navigateAndClose({ view: 'collection', slug: 'back-in-stock' })
+                navigateAndClose({ view: 'collection', slug: 'traditional' })
               }
               className="block w-full text-left text-[12px] tracking-[0.14em] py-1.5"
             >
-              BACK IN STOCK
+              TRADITIONAL
             </button>
             <button
               type="button"
               onClick={() => navigateAndClose({ view: 'info', slug: 'story' })}
-              className="block w-full text-left font-serif text-[17px] py-1.5"
+              className="block w-full text-left text-[12px] tracking-[0.14em] py-1.5"
             >
-              World of Hala
+              OUR STORY
             </button>
           </div>
 
@@ -392,28 +309,6 @@ export function Header({
                   className="text-left text-[12px] tracking-[0.1em] text-[#5C4534] py-1.5"
                 >
                   {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="pt-4 border-t border-[#EAE5DF] flex items-center justify-between">
-            <span className="text-[12px] tracking-[0.08em] text-[#8B7B6E]">
-              CURRENCY
-            </span>
-            <div className="flex items-center gap-2">
-              {CURRENCIES.map((code) => (
-                <button
-                  key={code}
-                  type="button"
-                  onClick={() => onChangeCurrency(code)}
-                  className={`px-2 py-1 text-[11px] border ${
-                    code === currency
-                      ? 'border-[#5C4534] bg-[#5C4534] text-white'
-                      : 'border-[#EAE5DF] text-[#4A382B]'
-                  }`}
-                >
-                  {code}
                 </button>
               ))}
             </div>
