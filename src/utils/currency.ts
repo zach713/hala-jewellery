@@ -1,4 +1,4 @@
-import { CurrencyCode } from '../types';
+import type { CurrencyCode } from '../types.ts';
 
 const CURRENCY_CONFIG: Record<
   CurrencyCode,

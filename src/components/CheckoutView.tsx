@@ -45,8 +45,6 @@ interface ConfirmedOrder {
 }
 
 const SAVED_INFO_KEY = 'hala_checkout_customer_v1';
-const GOOGLE_APPS_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbyM0SVPvVDndKJqmeM0kClsJkp2m2pHvBMR3B5fBUg27I4eaYM_nzLjagkS7QVDijGb/exec';
 
 const COUNTRIES = [
   'Morocco',
@@ -208,41 +206,66 @@ export function CheckoutView({
     const fullName = [customerSnapshot.firstName, customerSnapshot.lastName]
       .filter(Boolean)
       .join(' ');
-    const fullAddress = [
-      customerSnapshot.address,
-      customerSnapshot.city,
-      customerSnapshot.country,
-    ]
-      .filter(Boolean)
-      .join(', ');
+
+    let orderNumber = generateOrderCode();
+    let finalSubtotalAud = subtotalAud;
+    let finalDiscountAud = discountAud;
+    let finalTotalAud = totalAud;
 
     setIsSubmitting(true);
     try {
-      await fetch(GOOGLE_APPS_SCRIPT_URL, {
+      const response = await fetch('/api/orders', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name: fullName,
           phone: customerSnapshot.phone,
-          address: fullAddress,
+          city: customerSnapshot.city,
+          address: customerSnapshot.address,
+          promoCode: appliedPromo,
+          currency,
+          items: items.map((item) => ({
+            productId: item.productId,
+            quantity: item.quantity,
+            isGiftCard: Boolean(item.isGiftCard),
+            priceAud: item.isGiftCard ? item.priceAud : undefined,
+          })),
         }),
       });
+
+      if (response.ok) {
+        const result = (await response.json()) as {
+          orderNumber?: string;
+          subtotalAud?: number;
+          discountAud?: number;
+          totalAud?: number;
+        };
+        if (result.orderNumber) orderNumber = result.orderNumber;
+        if (typeof result.subtotalAud === 'number') {
+          finalSubtotalAud = result.subtotalAud;
+        }
+        if (typeof result.discountAud === 'number') {
+          finalDiscountAud = result.discountAud;
+        }
+        if (typeof result.totalAud === 'number') {
+          finalTotalAud = result.totalAud;
+        }
+      }
     } catch {
-      // Proceed to confirmation screen even if the opaque no-cors request fails
+      // Proceed to confirmation screen if network fails temporarily
     } finally {
       setIsSubmitting(false);
     }
 
     setConfirmedOrder({
-      orderNumber: generateOrderCode(),
+      orderNumber,
       customer: customerSnapshot,
       items: [...items],
-      subtotalAud,
-      discountAud,
-      totalAud,
+      subtotalAud: finalSubtotalAud,
+      discountAud: finalDiscountAud,
+      totalAud: finalTotalAud,
       appliedPromo,
     });
     onClearCart();

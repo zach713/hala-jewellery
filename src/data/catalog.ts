@@ -1,4 +1,4 @@
-import { CategorySlug, CategoryTile, CustomerReview, Product } from '../types';
+import type { CategorySlug, CategoryTile, CustomerReview, Product } from '../types.ts';
 
 export const HERO_MEDIA = {
   leftImage: '/src/assets/images/hero_editorial_left_1795290310652.jpg',
