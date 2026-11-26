@@ -98,6 +98,7 @@ export function CheckoutView({
   const [promoFeedback, setPromoFeedback] = useState<string | null>(null);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState<ConfirmedOrder | null>(
     null
@@ -213,6 +214,7 @@ export function CheckoutView({
     let finalTotalAud = totalAud;
 
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
       const response = await fetch('/api/orders', {
         method: 'POST',
@@ -235,26 +237,37 @@ export function CheckoutView({
         }),
       });
 
-      if (response.ok) {
-        const result = (await response.json()) as {
-          orderNumber?: string;
-          subtotalAud?: number;
-          discountAud?: number;
-          totalAud?: number;
-        };
-        if (result.orderNumber) orderNumber = result.orderNumber;
-        if (typeof result.subtotalAud === 'number') {
-          finalSubtotalAud = result.subtotalAud;
-        }
-        if (typeof result.discountAud === 'number') {
-          finalDiscountAud = result.discountAud;
-        }
-        if (typeof result.totalAud === 'number') {
-          finalTotalAud = result.totalAud;
-        }
+      const result = (await response.json().catch(() => ({}))) as {
+        error?: string;
+        orderNumber?: string;
+        subtotalAud?: number;
+        discountAud?: number;
+        totalAud?: number;
+      };
+
+      if (!response.ok) {
+        setSubmitError(
+          result.error ||
+            'Unable to submit your order right now. Please contact us on WhatsApp to complete your order.'
+        );
+        return;
+      }
+
+      if (result.orderNumber) orderNumber = result.orderNumber;
+      if (typeof result.subtotalAud === 'number') {
+        finalSubtotalAud = result.subtotalAud;
+      }
+      if (typeof result.discountAud === 'number') {
+        finalDiscountAud = result.discountAud;
+      }
+      if (typeof result.totalAud === 'number') {
+        finalTotalAud = result.totalAud;
       }
     } catch {
-      // Proceed to confirmation screen if network fails temporarily
+      setSubmitError(
+        'Unable to reach the order service right now. Please contact us on WhatsApp to complete your order.'
+      );
+      return;
     } finally {
       setIsSubmitting(false);
     }
@@ -941,6 +954,15 @@ export function CheckoutView({
                   </div>
                 </div>
               </section>
+
+              {submitError && (
+                <div
+                  role="alert"
+                  className="rounded-[6px] border border-[#D92D20] bg-[#FEF3F2] px-4 py-3 text-[13.5px] text-[#B42318] leading-snug"
+                >
+                  {submitError}
+                </div>
+              )}
 
               {/* Submit Button */}
               <button
