@@ -54,15 +54,15 @@ export const COLLECTION_META: Record<
   },
   'new-this-season': {
     title: 'NEW IN',
-    subtitle: 'Freshly curated silhouettes cast in 18k gold plating and white rhodium.',
+    subtitle: 'Freshly curated silhouettes in durable stainless steel with gold and silver tones.',
   },
   'back-in-stock': {
     title: 'BACK IN STOCK',
     subtitle: 'Most-requested signature pieces, returned in small numbered batches.',
   },
   'ear-cuffs': {
-    title: 'EAR CUFFS',
-    subtitle: 'The stacked-ear look, no new piercings required.',
+    title: 'SCULPTED EARRINGS',
+    subtitle: 'The stacked-ear look crafted in skin-safe stainless steel.',
   },
   sets: {
     title: 'SETS',
@@ -122,7 +122,7 @@ export const PRODUCTS: Product[] = [
     description:
       'A signature two-piece pairing featuring an adjustable double-wrap silk ribbon choker anchored by an oval-cut cubic zirconia pendant, matched with our delicate bezel-set stud earrings.',
     materials: [
-      '18k yellow gold plated brass over hypoallergenic core',
+      'Gold-toned stainless steel over hypoallergenic core',
       'Hand-cut AAA clear cubic zirconia stones',
       'Japanese satin-weave silk ribbon with extender clasp',
       'Nickel-free & safe for sensitive skin',
@@ -148,13 +148,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_kate_earrings_1795290311576.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
     ],
     description:
       'Sculpted high-polish crescent hoops cradling a floating oval-cut crystal centerpiece. Designed to hug the lobe comfortably while catching light from every angle.',
     materials: [
-      '18k gold plated over recycled brass',
+      'Gold-toned stainless steel finish',
       'Bezel-set oval AAA cubic zirconia',
       'Custom architectural hinged snap post',
     ],
@@ -180,13 +180,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_vivienne_earrings_1795290310345.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
     ],
     description:
-      'Architectural emerald-cut studs framed by minimalist four-prong 18k gold claws. Crisp step-cut facets deliver understated brilliance from morning meetings to evening dinners.',
+      'Architectural emerald-cut studs framed by minimalist four-prong gold-toned claws. Crisp step-cut facets deliver understated brilliance from morning meetings to evening dinners.',
     materials: [
-      '18k gold plated sterling silver posts',
+      'Gold-toned stainless steel posts',
       'Emerald step-cut high-clarity cubic zirconia',
       'Hypoallergenic & tarnish-resistant e-coating',
     ],
@@ -212,13 +212,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_kate_earrings_1795290311576.jpg',
     ],
     swatches: [
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
       'Graduated marquise crystal clusters cascade into luminous natural-lustre freshwater pearls. Fluid articulation ensures gentle movement with every turn.',
     materials: [
-      'White rhodium plated brass with 925 silver posts',
+      'Silver-toned stainless steel with hypoallergenic posts',
       'Natural freshwater pearl drops (11mm)',
       'Marquise-cut cubic zirconia',
     ],
@@ -226,12 +226,12 @@ export const PRODUCTS: Product[] = [
     careNote: 'Freshwater pearls are organic—keep away from hairspray and perfume.',
   },
   {
-    id: 'heaven-ear-cuff-set',
-    slug: 'heaven-ear-cuff-set',
-    name: 'Heaven Ear Cuff Set',
+    id: 'heaven-sculpted-set',
+    slug: 'heaven-sculpted-set',
+    name: 'Heaven Sculpted Hoop Set',
     priceAud: 129,
     category: 'ear-cuffs',
-    categoryLabel: 'Ear Cuffs',
+    categoryLabel: 'Earrings',
     isBackInStock: true,
     inStock: true,
     stockCount: 5,
@@ -243,18 +243,18 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_vivienne_earrings_1795290310345.jpg',
     ],
     swatches: [
-      { id: 'silver', label: 'Sterling Silver', hex: '#D5D7DA' },
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
-      'A curated pair of non-pierced .925 sterling silver ear cuffs—one sculptural high-polish band and one micro-pavé crystal band designed for effortless stacking.',
+      'A sleek pair of stainless steel sculptural earrings—one high-polish band and one micro-pavé crystal band designed for effortless stacking.',
     materials: [
-      'Hallmarked 925 sterling silver with white rhodium',
+      'Water-resistant stainless steel in silver or gold tone',
       'Hand-set micro-pavé cubic zirconia',
-      'No piercing required — gentle ergonomic squeeze fit',
+      'Ergonomic all-day comfort fit',
     ],
-    dimensions: 'Outer diameter 13mm · Band thickness 3.2mm · Set of 2 cuffs',
-    careNote: 'Slide onto the thinner upper rim of the ear and glide down to your preferred spot.',
+    dimensions: 'Outer diameter 13mm · Band thickness 3.2mm · Pair',
+    careNote: 'Wipe gently with a soft dry cloth after wear.',
   },
   {
     id: 'juliette-pearl-necklace',
@@ -274,13 +274,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_helena_set_1795290309434.jpg',
     ],
     swatches: [
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
       'An airy station chain punctuated with luminous floating freshwater pearls. Wear solo for quiet collar refinement or layer effortlessly with shorter chokers.',
     materials: [
-      'White rhodium plated sterling silver chain',
+      'Silver-toned stainless steel chain',
       'Cultured freshwater pearls (5–6mm)',
       'Custom lobster clasp with 5cm adjustment chain',
     ],
@@ -306,14 +306,14 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_heaven_ear_cuff_1795290310350.jpg',
     ],
     swatches: [
-      { id: 'two-tone', label: 'Silver & 18k Gold', hex: '#D1BC8A' },
-      { id: 'gold', label: 'All 18k Gold', hex: '#C6973F' },
+      { id: 'two-tone', label: 'Silver & Gold Tone', hex: '#D1BC8A' },
+      { id: 'gold', label: 'All Gold Tone', hex: '#C6973F' },
     ],
     description:
-      'A bold architectural cigar band cast in mirror-finished sterling silver and anchored by a brushed 18k gold teardrop crest. Comfort-contoured interior for all-day wear.',
+      'A bold architectural cigar band cast in mirror-finished stainless steel and anchored by a brushed gold-toned teardrop crest. Comfort-contoured interior for all-day wear.',
     materials: [
-      '925 sterling silver band with brushed 18k gold accent',
-      'Hypoallergenic & waterproof PVD gold plating',
+      'Stainless steel band with brushed gold-toned accent',
+      'Hypoallergenic & waterproof stainless steel',
     ],
     dimensions: 'Band width 11mm · Sizes US 6, 7, 8 available',
     careNote: 'Due to the wide silhouette, consider sizing up one half-size if between sizes.',
@@ -336,13 +336,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_sculptural_ring_1795290311106.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
-      'Fluid organic waves sculpted in high-shine 18k gold plating. The Onda cuff slips gracefully over the wrist or tailored sleeve as a solitary statement piece.',
+      'Fluid organic waves sculpted in high-shine gold-toned stainless steel. The Onda cuff slips gracefully over the wrist or tailored sleeve as a solitary statement piece.',
     materials: [
-      'Heavy-micron 18k yellow gold plated brass',
-      'Hand-polished wave contours with protective lacquer',
+      'Water-resistant gold-toned stainless steel',
+      'Hand-polished wave contours with protective finish',
     ],
     dimensions: 'Inner wrist circumference 16.5cm · Opening 28mm · Weight 34g',
     careNote: 'Slide over the narrow side of the wrist rather than bending the cuff opening.',
@@ -363,12 +363,12 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/hero_editorial_right_1795290311303.jpg',
     ],
     swatches: [
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
     ],
     description:
-      'Cascading linear drop earrings combining hand-wired freshwater pearls and delicate silver links for effortless evening elongation.',
+      'Cascading linear drop earrings combining hand-wired freshwater pearls and delicate silver-toned links for effortless evening elongation.',
     materials: [
-      'White rhodium plated sterling silver',
+      'Silver-toned stainless steel',
       'Natural freshwater baroque & round pearls',
     ],
     dimensions: 'Length 68mm · Weight 4.2g per earring',
@@ -389,13 +389,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_sculptural_ring_1795290311106.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
       { id: 'two-tone', label: 'Mixed Metal', hex: '#D1BC8A' },
     ],
     description:
-      'Three sculptural hammered and high-polish dome rings curated to stack across adjacent fingers or frame a single statement hand.',
+      'Three sculptural hammered and high-polish dome rings designed to stack across adjacent fingers or frame a single statement hand.',
     materials: [
-      '18k gold plated stainless steel — waterproof & tarnish-free',
+      'Gold-toned stainless steel — waterproof & tarnish-free',
     ],
     dimensions: 'Set of 3 rings · Adjustable comfort sizing (US 6–8)',
     careNote: 'Safe for daily handwashing; avoid abrasive cleaners.',
@@ -422,7 +422,7 @@ export const PRODUCTS: Product[] = [
       'Delicate archival ribbon choker with removable crystal drop charm. Currently awaiting our next numbered atelier restock.',
     materials: [
       'French silk-blend ribbon',
-      '18k gold plated removable pendant',
+      'Gold-toned stainless steel removable pendant',
     ],
     dimensions: 'Ribbon length 36cm + 5cm chain',
     careNote: 'Join the restock list on the product page for early dispatch access.',
@@ -443,25 +443,25 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_onda_bracelet_1795290309930.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
     ],
     description:
       'Sculpted hinged wrist bangles anchored with draping fine curb chains that catch movement across the wrist and hand.',
     materials: [
-      '18k yellow gold plated brass with protective clear coat',
+      'Gold-toned stainless steel with protective clear coat',
       'Secure concealed spring-hinge closure',
     ],
     dimensions: 'Inner diameter 60mm · Fits wrists 14.5cm–17.5cm',
     careNote: 'Open gently at the concealed hinge; keep chains unknotted when stored.',
   },
   {
-    id: 'lumiere-cuff-stack',
-    slug: 'lumiere-cuff-stack',
-    name: 'Lumiere Sculpted Ear Stack',
+    id: 'lumiere-sculpted-stack',
+    slug: 'lumiere-sculpted-stack',
+    name: 'Lumiere Sculpted Earrings',
     priceAud: 135,
     category: 'ear-cuffs',
-    categoryLabel: 'Ear Cuffs',
+    categoryLabel: 'Earrings',
     inStock: true,
     stockCount: 4,
     image: '/src/assets/images/cat_ear_cuffs_1795290310241.jpg',
@@ -470,15 +470,15 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_heaven_ear_cuff_1795290310350.jpg',
     ],
     swatches: [
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
     ],
     description:
-      'An architectural multi-band ear climber set in pavé crystal arcs that wrap cleanly along the helix—zero piercings required.',
+      'An architectural multi-band sculpted design in pavé crystal arcs crafted in durable stainless steel.',
     materials: [
-      'White rhodium plated brass',
+      'Silver-toned stainless steel',
       'Micro-set cubic zirconia stones',
     ],
-    dimensions: 'Set includes upper helix cuff & mid-ear arc',
+    dimensions: 'Compact contoured silhouette',
     careNote: 'Place over the upper ear cartilage and gently press for a custom fit.',
   },
   {
@@ -504,7 +504,7 @@ export const PRODUCTS: Product[] = [
       'Paired luminous baroque pearl drop earrings with our Juliette station pearl chain—an effortless bridal or evening ensemble.',
     materials: [
       'Natural baroque & cultured freshwater pearls',
-      '18k gold or white rhodium plated sterling posts',
+      'Gold or silver-toned stainless steel posts',
     ],
     dimensions: 'Necklace 42cm + 5cm · Earring drop 38mm',
     careNote: 'Presented in a double-tier Hala Jewellery keepsake box.',
@@ -524,13 +524,13 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_juliette_necklace_1795290310775.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
-      { id: 'silver', label: 'White Rhodium', hex: '#D5D7DA' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
+      { id: 'silver', label: 'Silver Tone', hex: '#D5D7DA' },
     ],
     description:
       'A sleek baguette emerald-cut crystal pendant suspended on a fine diamond-cut box chain, accompanied by matching Kate studs.',
     materials: [
-      '18k gold plated 925 sterling silver',
+      'Gold-toned stainless steel',
       'AAA step-cut cubic zirconia',
     ],
     dimensions: 'Chain 40cm + 5cm extender · Pendant 12mm × 9mm',
@@ -551,12 +551,12 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/cat_bracelets_1795290312113.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
-      'A slender sculptural bracelet watch in warm 18k gold finish with a minimalist champagne dial built to stack cleanly alongside delicate cuffs.',
+      'A slender sculptural bracelet watch in warm gold-toned stainless steel with a minimalist champagne dial built to stack cleanly alongside delicate cuffs.',
     materials: [
-      '18k gold plated stainless steel link strap',
+      'Gold-toned stainless steel link strap',
       'Scratch-resistant mineral crystal dial',
     ],
     dimensions: 'Case 22mm · Adjustable link clasp',
@@ -577,12 +577,12 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_onda_bracelet_1795290309930.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
       'Fluid Milanese-inspired wrist watch featuring an ultra-slim bezel and satin dial that transitions effortlessly from daywear to evening.',
     materials: [
-      '18k yellow gold plated stainless steel',
+      'Gold-toned stainless steel',
       'Japanese quartz movement',
     ],
     dimensions: 'Case 24mm · Self-adjusting mesh strap',
@@ -603,12 +603,12 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/hero_editorial_right_1795290311303.jpg',
     ],
     swatches: [
-      { id: 'gold-pearl', label: '18k Gold & Freshwater Pearl', hex: '#E6D6B8' },
+      { id: 'gold-pearl', label: 'Gold Tone & Freshwater Pearl', hex: '#E6D6B8' },
     ],
     description:
       'Inspired by classic Moroccan bridal adornment, pairing radiant cultured pearls with intricate gold-toned drop detailing made to complement caftans.',
     materials: [
-      '18k yellow gold plated sterling posts',
+      'Gold-toned stainless steel posts',
       'Hand-selected luminous freshwater pearls',
     ],
     dimensions: 'Drop length 42mm · Lightweight ceremonial silhouette',
@@ -629,12 +629,12 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/prod_helena_set_1795290309434.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
       'A refined Moroccan-inspired statement pendant balanced on fine pearl-stationed links, crafted for celebratory occasions and timeless eveningwear.',
     materials: [
-      '18k gold plated 925 sterling silver',
+      'Gold-toned stainless steel',
       'Cultured freshwater pearl accents',
     ],
     dimensions: 'Chain 45cm + 5cm extender',
@@ -655,12 +655,12 @@ export const PRODUCTS: Product[] = [
       '/src/assets/images/cat_bracelets_1795290312113.jpg',
     ],
     swatches: [
-      { id: 'gold', label: '18k Gold', hex: '#C6973F' },
+      { id: 'gold', label: 'Gold Tone', hex: '#C6973F' },
     ],
     description:
       'Richly proportioned ceremonial wrist and hand silhouette evoking traditional Moroccan goldsmithing with a clean modern finish.',
     materials: [
-      '18k yellow gold plated brass over hypoallergenic core',
+      'Gold-toned stainless steel over hypoallergenic core',
       'Tarnish-resistant protective finish',
     ],
     dimensions: 'Adjustable open silhouette · Fits wrists 14cm–18cm',
@@ -700,9 +700,9 @@ export const CUSTOMER_REVIEWS: CustomerReview[] = [
     id: 'rev-4',
     author: 'Nadia Al-Mansoor',
     quote:
-      'These ear cuffs are sculptural perfection—quality feels heirloom-grade and they sit comfortably without pinching all day.',
+      'These sculpted hoops are perfection—quality feels heirloom-grade and they sit comfortably without pinching all day.',
     rating: 5,
-    productName: 'Heaven Ear Cuff Set',
+    productName: 'Heaven Sculpted Hoop Set',
     verified: true,
   },
   {

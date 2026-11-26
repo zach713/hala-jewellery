@@ -1,6 +1,6 @@
 {
   "name": "Hala Jewellery",
-  "description": "Luxury contemporary jewellery e-commerce storefront featuring limited small-batch earrings, sculptural rings, ear cuffs, necklaces, bracelets, and curated sets.",
+  "description": "Modern, elegant and Moroccan-inspired jewellery and watches for women, in stainless steel, at fair prices. Cash on delivery across Morocco.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

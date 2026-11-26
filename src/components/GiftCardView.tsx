@@ -35,7 +35,7 @@ export function GiftCardView({ currency, onAddGiftCard }: GiftCardViewProps) {
               <p className="text-[13px] text-white/80 max-w-[260px] italic font-serif text-lg">
                 {message.trim()
                   ? `“${message.trim()}”`
-                  : '“Limited pieces. Lasting presence.”'}
+                  : '“Modern Touch. Moroccan Soul.”'}
               </p>
               <span className="font-serif text-[32px] tabular-nums text-[#E3C8A8]">
                 {formatPrice(selectedAmount, currency)}

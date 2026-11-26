@@ -119,9 +119,9 @@ export function HomeView({
       {/* 4. Editorial Brand Statement */}
       <section className="max-w-[780px] mx-auto px-6 py-14 md:py-20 text-center">
         <blockquote className="font-sans text-[18px] md:text-[22px] leading-[1.6] font-light text-[#5C4534] [text-wrap:balance]">
-          &ldquo;Hala Jewellery curates limited pieces for women who use
+          &ldquo;Hala Jewellery curates signature pieces for women who use
           accessories as part of their identity. Designed to feel distinctive,
-          expressive, and naturally memorable but never predictable.&rdquo;
+          expressive, and naturally memorable.&rdquo;
         </blockquote>
         <button
           type="button"

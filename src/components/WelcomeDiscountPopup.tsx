@@ -131,7 +131,7 @@ export function WelcomeDiscountPopup({
             <div className="relative min-h-[240px] md:min-h-[430px] bg-[#EDE5DC] overflow-hidden">
               <JewelleryImage
                 src="/src/assets/images/cat_ear_cuffs_1795290310241.jpg"
-                alt="Hala Jewellery sculpted gold ear cuffs editorial"
+                alt="Hala Jewellery stainless steel earrings editorial"
                 loading="eager"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />

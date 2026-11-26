@@ -81,7 +81,7 @@ export function InfoView({ slug, onNavigate }: InfoViewProps) {
                 Atelier Notes · Volume 04
               </p>
               <h2 className="font-serif text-[26px] text-[#5C4534]">
-                The Art of Mixing Warm Gold &amp; Cool White Rhodium
+                The Art of Mixing Warm Gold &amp; Cool Silver Tones
               </h2>
               <p className="text-[14px] leading-[1.75] text-[#6E5441]">
                 Why two-tone silhouettes like our Solis Teardrop Ring bridge
@@ -93,10 +93,10 @@ export function InfoView({ slug, onNavigate }: InfoViewProps) {
                 Styling Guide · Volume 03
               </p>
               <h2 className="font-serif text-[26px] text-[#5C4534]">
-                Sculpting an Effortless Non-Pierced Ear Stack
+                Sculpting an Effortless Layered Stack
               </h2>
               <p className="text-[14px] leading-[1.75] text-[#6E5441]">
-                Pairing our Heaven Ear Cuff Set with emerald-cut studs for
+                Pairing our sculptural hoops with emerald-cut studs for
                 balanced vertical rhythm along the ear.
               </p>
             </article>
@@ -158,18 +158,18 @@ export function InfoView({ slug, onNavigate }: InfoViewProps) {
                 Are Hala Jewellery pieces hypoallergenic?
               </h2>
               <p className="text-[14px] text-[#6E5441] leading-relaxed">
-                Yes. Every piece is nickel-free and crafted with 925 sterling
-                silver posts or skin-safe surgical alloys under our 18k gold and
-                white rhodium finishes.
+                Yes. Every piece is nickel-free and crafted in skin-safe
+                stainless steel and surgical-grade alloys in gold and silver
+                tones.
               </p>
             </div>
             <div className="py-5 space-y-2">
               <h2 className="text-[15px] font-medium text-[#4A382B]">
-                Do ear cuffs require piercings?
+                Is your stainless steel jewellery water-resistant?
               </h2>
               <p className="text-[14px] text-[#6E5441] leading-relaxed">
-                No piercings are required. Slide the cuff onto the narrowest
-                upper edge of your ear and gently glide it into place.
+                Yes. Our stainless steel pieces are designed to resist everyday
+                moisture and keep their lustrous finish over time.
               </p>
             </div>
             <div className="py-5 space-y-2">

@@ -304,8 +304,8 @@ export function CartDrawer({
                 Your bag is currently empty.
               </p>
               <p className="text-[13px] text-[#8B7B6E] max-w-[240px]">
-                Explore our limited small-batch earrings, sculptural rings, and
-                curated sets.
+                Explore our stainless steel necklaces, earrings, rings, bracelets,
+                and watches.
               </p>
             </div>
           ) : (

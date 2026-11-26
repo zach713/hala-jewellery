@@ -60,7 +60,7 @@ export function SearchOverlay({
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search rings, pearl earrings, ear cuffs, sets..."
+              placeholder="Search necklaces, earrings, rings, bracelets, watches..."
               className="flex-1 text-[16px] text-[#4A382B] placeholder:text-[#9E8F83] focus:outline-none"
             />
             <button
